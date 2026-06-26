@@ -57,6 +57,38 @@ def add(title, prioridad="media", fecha=None):
     print(f"{Fore.GREEN}✓ Tarea agregada:{Style.RESET_ALL} {title} {color}[{prioridad}]{Style.RESET_ALL}{fecha_txt}")
 
 
+def edit(task_id, titulo=None, prioridad=None, fecha=None):
+    if titulo is None and prioridad is None and fecha is None:
+        print(f"{Fore.RED}Debes indicar al menos un campo para editar.")
+        return
+    if prioridad is not None and prioridad not in PRIORIDADES:
+        print(f"{Fore.RED}Prioridad inválida. Usa: alta, media, baja")
+        return
+    if fecha is not None:
+        try:
+            date.fromisoformat(fecha)
+        except ValueError:
+            print(f"{Fore.RED}Fecha inválida. Usa el formato YYYY-MM-DD (ej: 2026-07-01)")
+            return
+    tasks = load()
+    for t in tasks:
+        if t["id"] == task_id:
+            cambios = []
+            if titulo is not None:
+                cambios.append(f"título: '{t['title']}' → '{titulo}'")
+                t["title"] = titulo
+            if prioridad is not None:
+                cambios.append(f"prioridad: {t['prioridad']} → {prioridad}")
+                t["prioridad"] = prioridad
+            if fecha is not None:
+                cambios.append(f"fecha: {t.get('fecha')} → {fecha}")
+                t["fecha"] = fecha
+            save(tasks)
+            print(f"{Fore.GREEN}✓ Tarea {task_id} editada:{Style.RESET_ALL} {', '.join(cambios)}")
+            return
+    print(f"{Fore.RED}No se encontró la tarea {task_id}")
+
+
 def list_tasks():
     tasks = load()
     if not tasks:

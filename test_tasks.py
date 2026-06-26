@@ -154,3 +154,56 @@ def test_filter_invalido(capsys):
     from tasks import filter_tasks
     filter_tasks("otro")
     assert "inválido" in capsys.readouterr().out
+
+
+# ── Editar tareas ──────────────────────────────────────────────────────────────
+
+def test_editar_titulo():
+    from tasks import add, edit
+    from storage import load
+    add("Original")
+    edit(1, titulo="Modificado")
+    t = load()[0]
+    assert t["title"] == "Modificado"
+    assert t["prioridad"] == "media"
+    assert t["done"] is False
+
+
+def test_editar_prioridad():
+    from tasks import add, edit
+    from storage import load
+    add("Tarea")
+    edit(1, prioridad="alta")
+    assert load()[0]["prioridad"] == "alta"
+
+
+def test_editar_fecha():
+    from tasks import add, edit
+    from storage import load
+    add("Tarea")
+    edit(1, fecha="2027-01-15")
+    assert load()[0]["fecha"] == "2027-01-15"
+
+
+def test_editar_sin_campos(capsys):
+    from tasks import edit
+    from storage import load
+    edit(1)
+    assert "al menos un campo" in capsys.readouterr().out
+    assert len(load()) == 0
+
+
+def test_editar_prioridad_invalida(capsys):
+    from tasks import add, edit
+    from storage import load
+    add("Tarea")
+    capsys.readouterr()
+    edit(1, prioridad="urgente")
+    assert "inválida" in capsys.readouterr().out
+    assert load()[0]["prioridad"] == "media"
+
+
+def test_editar_id_inexistente(capsys):
+    from tasks import edit
+    edit(99, titulo="X")
+    assert "No se encontró" in capsys.readouterr().out
