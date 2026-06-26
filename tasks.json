@@ -1,0 +1,93 @@
+[
+  {
+    "id": 2,
+    "title": "Revisar pull requests",
+    "done": true,
+    "prioridad": "alta",
+    "fecha": "2026-06-25"
+  },
+  {
+    "id": 3,
+    "title": "Reunión con el equipo",
+    "done": false,
+    "prioridad": "media",
+    "fecha": "2026-07-01"
+  },
+  {
+    "id": 4,
+    "title": "Actualizar dependencias",
+    "done": false,
+    "prioridad": "media",
+    "fecha": null
+  },
+  {
+    "id": 5,
+    "title": "Leer documentación nueva",
+    "done": false,
+    "prioridad": "baja",
+    "fecha": "2026-07-15"
+  },
+  {
+    "id": 6,
+    "title": "Organizar escritorio",
+    "done": false,
+    "prioridad": "baja",
+    "fecha": null
+  },
+  {
+    "id": 7,
+    "title": "escribir prompt Alta",
+    "done": false,
+    "prioridad": "media",
+    "fecha": null
+  },
+  {
+    "id": 8,
+    "title": "escribir prompt",
+    "done": false,
+    "prioridad": "alta",
+    "fecha": null
+  },
+  {
+    "id": 14,
+    "title": "Migrar base de datos a producción",
+    "done": false,
+    "prioridad": "alta",
+    "fecha": "2026-06-28"
+  },
+  {
+    "id": 9,
+    "title": "Implementar autenticación OAuth",
+    "done": false,
+    "prioridad": "alta",
+    "fecha": "2026-07-05"
+  },
+  {
+    "id": 10,
+    "title": "Refactorizar módulo de reportes",
+    "done": false,
+    "prioridad": "media",
+    "fecha": "2026-07-15"
+  },
+  {
+    "id": 11,
+    "title": "Revisar logs de errores semanales",
+    "done": false,
+    "prioridad": "media",
+    "fecha": null
+  },
+  {
+    "id": 12,
+    "title": "Actualizar README del proyecto",
+    "done": false,
+    "prioridad": "baja",
+    "fecha": "2026-08-01"
+  },
+  {
+    "id": 13,
+    "title": "Organizar carpetas de assets",
+    "done": false,
+    "prioridad": "baja",
+    "fecha": null
+  }
+]
